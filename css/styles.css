@@ -91,7 +91,7 @@ header{
             font-size: 16px;
             margin: 10px;
             font-weight: 600;
-            max-width: 100px;
+            max-width: 150px;
             font-family: var(--heading-font-family);
             letter-spacing: 2px;
         }
@@ -297,6 +297,7 @@ header{
             padding: 0;
             font-size: 80px;
             text-transform: uppercase;
+            text-align: center;
             font-family: var(--heading-font-family);
             letter-spacing: 3px;
         }
@@ -305,6 +306,7 @@ header{
             padding: 0;
             font-family: var(--description-font-family);
             font-size: 24px;
+            text-align: center;
         }
     }
 }
