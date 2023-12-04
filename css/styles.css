@@ -241,7 +241,7 @@ header{
 
 .welcome{
     display: flex;
-    background-image: url("https://github.com/publicvoidstudios/cosmo-web/blob/main/landing_bg.jpg");
+    background-image: url("https://raw.githubusercontent.com/publicvoidstudios/cosmo-web/main/landing_bg.jpg");
     background-size: cover;
     color: white;    
     height: 96vh;
