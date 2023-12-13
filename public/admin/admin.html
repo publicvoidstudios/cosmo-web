@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>MK II Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>    
+    <div class="navigation-panel-container">
+        <a href="/students">Назад к разделам</a>
+        <button id="sections">Разделы</button>
+        <button id="subsections">Подразделы</button>
+        <button id="content">Контент</button>
+    </div>
+    <div class="admin-panel-container">
+        <div class="sections">
+            <div class="sections-list">
+                <table class="section-table">
+                    <thead>
+                        <tr class="section-container">
+                            <td>
+                                <p class="section-id"><b>Номер</b></p>
+                            </td>
+                            <td>
+                                <p class="section-name"><b>Название</b></p>
+                            </td>
+                            <td>
+                                <p class="section-html-id"><b>ID раздела</b></p>
+                            </td>
+                            <td>
+                                <p class="section-img-url"><b>Изображение</b></p>
+                            </td>
+                            <td>
+                                <p><b>Удалить?</b></p>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    </tbody>
+                </table>             
+            </div>
+            <div class="add-section-container">
+                <button class="add-section-button">+ Добавить раздел</button>
+            </div>
+            <div class="form-container sections-form hidden">
+                <span>&times;</span>
+                <div class="form">
+                    <h1>Добавить новый раздел</h1>
+
+                    <label for="ms-name">Название раздела</label>
+                    <input type="text" name="" id="ms-name" placeholder="Название раздела... Например: Анатомия">
+                    <p>
+                        Название раздела должно быть написано на русском языке. Одно слово без пробелов. Это название, которое будут видеть пользователи. ВАЖНО: каждое название раздела должно быть уникальным.</p>
+                    <label for="ms-html_id">ID раздела</label>
+                    <input type="text" name="" id="ms-html_id" placeholder="ID раздела... Например: anatomy">
+                    <p>
+                        ID раздела. Пишется только на английском языке. Одно слово без пробелов. С маленькой буквы. ВАЖНО: это название должно быть обязательно уникальным.</p>
+                    <label for="ms-img_url">Ссылка на изображение</label>
+                    <input type="text" name="" id="ms-img_url" placeholder="Ссылка на изображение... Например: https://www.example.com/image.png">
+                    <p>
+                        Указывается ссылка на изображение, которое будет означать раздел. Желательно указывать изображения с соотношением сторон: 1:1 для более приятного отображения.</p>
+
+                    <button class="ms-send">Создать раздел</button>
+                </div>
+            </div>            
+        </div>
+        <div class="subsections">
+            <!--List of subsections-->
+            <div class="subsections-list">
+                <table class="subsection-table">
+                    <thead>
+                        <tr class="section-container">
+                            <td>
+                                <p class="subsection-id"><b>Номер</b></p>
+                            </td>
+                            <td>
+                                <p class="subsection-parent-name"><b>Относится к разделу</b></p>
+                            </td>
+                            <td>
+                                <p class="subsection-name"><b>Название</b></p>
+                            </td>
+                            <td>
+                                <p class="subsection-html-id"><b>ID подраздела</b></p>
+                            </td>
+                            <td>
+                                <p class="subsection-img-url"><b>Изображение</b></p>
+                            </td>
+                            <td>
+                                <p><b>Удалить?</b></p>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <!--Add subsection container-->
+            <div class="add-subsection-container">
+                <button class="add-subsection-button">+ Добавить подраздел</button>
+            </div>
+            <!--Form to add subsection-->
+            <div class="subsections-form-container hidden">
+                <span class="subsections-form-close">&times;</span>
+                <div class="form">
+                    <h1>Добавить новый подраздел</h1>
+                    <label>Относится к разделу:
+                        <select name="ss_parent_name" id="ss-parent-name">
+                            <!--Options are automatically generated here-->
+                        </select>
+                    </label>
+                    <p>
+                        Необходимо выбрать раздел, к которому относится созадаваемый подраздел.</p>
+                    <br>
+                    <label>Название подраздела
+                        <input type="text" name="" id="ss-name" placeholder="Название раздела... Например: Кости">
+                    </label>                    
+                    <p>
+                        Название раздела должно быть написано на русском языке. Одно слово без пробелов. Это название, которое будут видеть пользователи. ВАЖНО: каждое название раздела должно быть уникальным.</p>
+                    <label>ID подраздела
+                        <input type="text" name="" id="ss-html-id" placeholder="ID раздела... Например: bones">
+                    </label>                    
+                    <p>
+                        ID раздела. Пишется только на английском языке. Одно слово без пробелов. С маленькой буквы. ВАЖНО: это название должно быть обязательно уникальным.</p>
+                    <label>Ссылка на изображение
+                        <input type="text" name="" id="ss-img-url" placeholder="Ссылка на изображение... Например: https://www.example.com/image.png">
+                    </label>
+                    <p>
+                        Указывается ссылка на изображение, которое будет означать раздел. Желательно указывать изображения с соотношением сторон: 1:1 для более приятного отображения.</p>
+
+                    <button class="ss-send">Создать раздел</button>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content-list">
+                <table class="content-table">
+                    <thead>
+                        <tr class="content-container">
+                            <td>
+                                <p class="content-id"><b>Номер</b></p>
+                            </td>
+                            <td>
+                                <p class="content-subsection-id"><b>Относится к подразделу</b></p>
+                            </td>
+                            <td>
+                                <p class="content-type"><b>Тип контента</b></p>
+                            </td>
+                            <td>
+                                <p class="content-param-1"><b>Содержимое 1</b></p>
+                            </td>
+                            <td>
+                                <p class="content-param-2"><b>Содержимое 2</b></p>
+                            </td>
+                            <td>
+                                <p><b>Удалить?</b></p>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    </tbody>
+                </table>
+            </div>
+            <div class="add-content-container">
+                <button class="add-content-button"> + Добавить контент</button>
+            </div>
+            <div class="content-form-container hidden">
+                <span class="content-form-close">&times;</span>
+                <div class="form">
+                    <h1>Добавить новый контент</h1>
+                    <label>Относится к подразделу:
+                        <select name="content-parent-name" id="content-parent-name" required>
+                            <!--Options are automatically generated here-->
+                        </select>
+                    </label>
+                    <p>
+                        Необходимо выбрать подраздел, к которому относится добавляемый контент.</p>
+                    <br>
+                    <label>Тип контента
+                        <select id="content-type" required>
+                            <option value="image">Изображение</option>
+                            <option value="video">Видео</option>
+                            <option value="article">Статья</option>
+                            <option value="pptx">Презентация</option>
+                        </select>
+                    </label>
+                    <p>
+                        Необходимо выбрать тип добавляемого контента.
+                    </p>
+                    <label>Первый параметр
+                        <input type="text" name="" id="content-param-1" placeholder="Введите первый параметр" required>
+                    </label>
+                    <p>
+                        Для изображений: ссылка на изображение.
+                        Для видео: название видео.
+                        Для статей: название статьи.
+                        Для презентаций: название презентации.
+                    </p>
+                    <label>Второй параметр
+                        <textarea name="" id="content-param-2" placeholder="Введите второй параметр..." required></textarea>
+                    </label>
+                    <p>
+                        Для изображений: описание изображения.
+                        Для видео: код для вставки видео на сайт (блок iframe, скопированный с YouTube).
+                        Для статей: Текст статьи.
+                        Для презентаций: код для вставки презентации на сайт (блок iframe, скопированный с OneDrive).
+                    </p>
+
+                    <button class="content-send">Добавить контент</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <script src="admin.js"></script>
+</body>
+</html>

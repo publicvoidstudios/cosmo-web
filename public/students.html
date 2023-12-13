@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>MK II Студентам</title>
+    <link rel="stylesheet" href="./css/lessons_styles.css">
+</head>
+<body>    
+    <header>
+        <div class="panel-logo-name-container">
+            <img class="panel-logo" src="resources/site_logo.png" alt="">
+            <h1 class="panel-name">Медицина и косметология 2.0</h1>
+        </div>
+        <div class="panel-navigation-container">
+            <a class="navigation-button" href="#welcome">Домой</a>
+            <a class="navigation-button" href="#services">Услуги</a>
+            <a class="navigation-button" href="#courses">Обучение</a>
+            <a class="navigation-button" href="#contacts">Контакты</a>
+        </div>
+        <div class="panel-navigation-container">
+            <a class="navigation-button extra" href="/">На главную</a>
+        </div>
+    </header>
+    <script src="js/hide-nav-bar.js"></script>
+    <main>
+        <!--Название раздела или подраздела. В начале называется разделы. При переключении название изменяется-->
+        <div class="heading">
+            <div class="heading-container">
+                <div class="heading-name-icon">
+                    <img src="resources/sections_logo.png" alt="">
+                    <h1 class="heading-name">Разделы</h1>
+                </div>
+                
+                <button class="back-button hidden">Назад</button>
+            </div>            
+        </div>
+        
+        <!--Контейнер для разделов. Каждый раздел представляет собой кнопку класса element. Хранит в себе название и картинку.-->
+        <div class="container">
+            
+        </div>
+        
+        <!--Контейнер для всех подразделов. -->
+        <div class="all-subsections-container">            
+            <div class="subsections-buttons hidden">
+            </div>
+        </div>
+        
+        <script type="text/javascript" src="js/content_manager.js"></script>
+        <script type="text/javascript" src="js/cm-content.js"></script>
+        <!--Script for images preview-->
+        <script>
+            let itemParent;
+            let itemParentsParent;
+            document.querySelectorAll('.image').forEach(item => {
+                item.addEventListener('click', () => {
+                    /*Set item parent*/
+                    itemParent = item.parentNode;
+                    /*Set parent's parent*/
+                    itemParentsParent = itemParent.parentNode;
+                    /*Show pop-up*/
+                    itemParentsParent.querySelector('.pop-up').style.display = 'flex';
+                    /*Attach image*/
+                    itemParentsParent.querySelector('.pop-up img').src = item.querySelector('.image-container').querySelector('img').getAttribute('src');
+                    /*Attach text*/
+                    itemParentsParent.querySelector('.pop-up p').innerHTML = item.querySelector('.sub-item-desc').innerHTML;
+                    /*Update onclick event for popup button*/
+                    itemParentsParent.querySelector('.pop-up span').onclick = () => {
+                        itemParentsParent.querySelector('.pop-up').style.display = 'none';
+                    }
+                });
+            });
+
+
+        </script>
+        <!--Script for articles preview-->
+        <script>
+            let artItemParent;
+            let artItemParentsParent;
+            document.querySelectorAll('.article').forEach(item => {
+                item.addEventListener('click', () => {
+                    /*Set item parent*/
+                    artItemParent = item.parentNode;
+                    /*Set parent's parent*/
+                    artItemParentsParent = artItemParent.parentNode;
+                    /*Show pop-up*/
+                    artItemParentsParent.querySelector('.pop-up').style.display = 'flex';
+                    /*Attach image*/
+                    artItemParentsParent.querySelector('.pop-up .article-name').innerHTML = item.querySelector('.sub-item-name').innerHTML;
+                    /*Attach text*/
+                    artItemParentsParent.querySelector('.pop-up .article-text').innerHTML = item.querySelector('.sub-item-desc').innerHTML;
+                    /*Update onclick event for popup button*/
+                    artItemParentsParent.querySelector('.pop-up span').onclick = () => {
+                        artItemParentsParent.querySelector('.pop-up').style.display = 'none';
+                    }
+                });
+            });
+
+
+        </script>
+    </main>
+    
+    
+    
+    
+    <script type="text/javascript" src="js/navigation.js"></script>
+    <script type="text/javascript" src="js/vanilla-tilt.min.js"></script>
+</body>
+</html>
