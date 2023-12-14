@@ -48,8 +48,8 @@ body {
 /*Header, containing panel*/
 header{
     /*Vars*/
-    --logo-width: 100px;
-    --logo-height: 100px;
+    --logo-width: 80px;
+    --logo-height: 80px;
 
     --font-color: #FFFFFF;
     --font-family: 'Roboto', sans-serif;
@@ -90,7 +90,7 @@ header{
         /*Name of website*/
         .panel-name{
             text-transform: uppercase;
-            font-size: 20px;
+            font-size: 16px;
             margin: 10px;
             font-weight: 600;
             max-width: 180px;
@@ -127,7 +127,8 @@ header{
             height: 60%;
             align-self: center;
             margin-right: 30px;
-            width: 150px;
+            text-align: center;
+            font-size: 14px;
         }
         .extra:hover{
             color: var(--font-color);
