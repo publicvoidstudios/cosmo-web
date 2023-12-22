@@ -286,6 +286,7 @@ header{
 .sub-div-container{
     border-radius: 10px;
     margin-top: 20px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     
@@ -315,8 +316,6 @@ header{
         /*Container for all items in subsection*/
         .sub-items-container{
             display: flex;
-            overflow: auto;
-            width: 100%;
             
             .sub-item-video{
                 justify-self: center;
@@ -333,7 +332,7 @@ header{
                 }
             }
             
-            .article{
+            .article, .image{
                 cursor: pointer;
             }
             
@@ -344,14 +343,15 @@ header{
                 margin: 10px;
                 display: flex;
                 flex-direction: column;
+                min-width: 300px;
                 max-width: 400px;
                 justify-content: flex-start;
                 
                 .image-container{
                     display: flex;
                     align-items: center;
-                    width: 380px;
-                    height: 380px;
+                    width: auto;
+                    height: 300px;
 
                     border-radius: 10px;
                     margin: 10px;
@@ -359,8 +359,6 @@ header{
                     overflow: hidden;
 
                     & img{
-
-                        cursor: pointer;
                         border-radius: 10px;                        
                         width: 100%;
                     }
@@ -368,7 +366,7 @@ header{
                 
                 .sub-item-desc{
                     align-self: center;
-                    height: 74px;
+                    height: 110px;
                     max-width: 94%;
                     text-align: center;
                     font-family: var(--description-font-family);
@@ -376,23 +374,22 @@ header{
                     font-size: 16px;
 
                     display: -webkit-box;
-                    -webkit-line-clamp: 4;
+                    -webkit-line-clamp: 6;
                     -webkit-box-orient: vertical;
                     overflow: hidden;
+
+                    margin: 5px 0;
                 }
                 
                 .sub-item-name{
                     align-self: center;
-                    height: 74px;
+                    height: 40px;
                     max-width: 94%;
                     text-align: center;
                     font-family: var(--heading-font-family);
                     color: var(--headings-font-color);
                     font-size: 24px;
-                }
-
-                .pptx{
-                    margin: 10px;
+                    margin: 5px 0;
                 }
             }
         }
@@ -401,11 +398,23 @@ header{
     .presentations{
         .sub-items-container{
             .sub-item{
-                max-width: 600px;
+                min-width: 300px;
                 overflow: hidden;
-                &iframe{
-                    margin: 10px;
-                    border-radius: 10px;
+                & iframe{
+                    width: 300px;
+                    height: 210px;
+                    border-radius: 10px 10px 0 0;
+                }
+                .sub-item-name{
+                    margin: 10px 0;
+                    padding: 0;
+                    height: 68px;
+                    font-size: 18px;
+
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
                 }
             }
         }
@@ -426,6 +435,10 @@ header{
         justify-content: center;
         
         overflow: auto;
+        ::-webkit-scrollbar{
+            width: 10px;
+            height: 0;
+        }
         
         & span{
             --close-button-size: 50px;
@@ -433,7 +446,7 @@ header{
             background: var(--secondary-color);
             position: fixed;
             top: 30px;
-            right: 30px;
+            right: 40px;
             font-size: var(--close-button-size);
             width: var(--close-button-size);
             height: var(--close-button-size);
@@ -479,6 +492,8 @@ header{
             
             overflow: scroll;
 
+            
+            
             .article-name{
                 font-family: var(--heading-font-family);
                 color: var(--headings-font-color);
@@ -518,3 +533,128 @@ header{
     display: none;
 }
 
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.masked-overflow {
+    /* scroll bar width, for use in mask calculations */
+    --scrollbar-width: 0px;
+
+    /* mask fade distance, for use in mask calculations */
+    --mask-height: 3%;
+
+    /* If content exceeds height of container, overflow! */
+    overflow-x: auto;
+
+    /* Our height limit */
+    width: 94%;
+
+    /* Need to make sure container has bottom space,
+  otherwise content at the bottom is always faded out */
+    padding-left: var(--mask-height);
+    padding-right: var(--mask-height);
+
+    /* The CSS mask */
+
+    /* The content mask is a linear gradient from top to bottom */
+    --mask-image-content: linear-gradient(
+            to right,
+            transparent,
+            black var(--mask-height),
+            black calc(100% - var(--mask-height)),
+            transparent
+    );
+
+    /* Here we scale the content gradient to the width of the container 
+  minus the scrollbar width. The height is the full container height */
+    --mask-size-content: calc(100% - var(--scrollbar-width)) 100%;
+
+    /* The scrollbar mask is a black pixel */
+    --mask-image-scrollbar: linear-gradient(black, black);
+
+    /* The width of our black pixel is the width of the scrollbar.
+  The height is the full container height */
+    --mask-size-scrollbar: var(--scrollbar-width) 100%;
+
+    /* Apply the mask image and mask size variables */
+    mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+    mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+
+    /* Position the content gradient in the top left, and the 
+  scroll gradient in the top right */
+    mask-position: 0 0, 100% 0;
+
+    /* We don't repeat our mask images */
+    mask-repeat: no-repeat, no-repeat;
+}
+
+.arrow-buttons{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    left: 2%;
+    width: 96%;
+    align-self: center;
+    pointer-events: none;
+
+    .arrow-button{
+        background-color: var(--arrow-buttons-background-color);
+        width: 40px;
+        height: 40px;
+        margin: 20px;
+        color: var(--secondary-color);
+        border-radius: 50%;
+        border: none;
+        font-family: var(--heading-font-family);
+        font-weight: 900;
+        box-shadow: inset #808080 0 0 5px 0, #808080 0 0 5px 0;
+        opacity: 0.5;
+        pointer-events: all;
+        cursor: pointer;
+
+        .arrow {
+            border: solid var(--headings-font-color);
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 4px;
+        }
+
+        .right {
+            transform: rotate(-45deg);
+            margin-right: 3px;
+            margin-top: 4px;
+        }
+
+        .left {
+            transform: rotate(135deg);
+            margin-left: 3px;
+            margin-top: 4px;
+        }
+    }
+
+    .arrow-button:hover{
+        opacity: 0.8;
+    }
+}

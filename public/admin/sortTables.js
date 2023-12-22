@@ -4,6 +4,7 @@
  * @param {boolean} asc If true, sort in ascending order
  */
 
+console.log('Sort Tables JS connected!')
 function sortTable(table, column, asc){
     const directionModifier = asc ? 1 : -1;    
     const tBody = table.tBodies[0];
@@ -13,8 +14,11 @@ function sortTable(table, column, asc){
     const sortedRows = rows.sort((a ,b) => {
         const aColText = a.querySelector(`td:nth-child(${column + 1})`).textContent.trim();
         const bColText = b.querySelector(`td:nth-child(${column + 1})`).textContent.trim();
-        
-        return aColText > bColText ? (1 * directionModifier) : (-1 * directionModifier);
+        if(column === 0){
+            return parseInt(aColText) > parseInt(bColText) ? (1 * directionModifier) : (-1 * directionModifier);
+        } else{
+            return aColText > bColText ? (1 * directionModifier) : (-1 * directionModifier);
+        }
     });
     
     //Remove all existing TRs from the table
@@ -30,3 +34,14 @@ function sortTable(table, column, asc){
     table.querySelector(`th:nth-child(${column + 1})`).classList.toggle('th-sort-asc', asc);
     table.querySelector(`th:nth-child(${column + 1})`).classList.toggle('th-sort-desc', !asc);
 }
+
+document.querySelectorAll('.table-sortable th').forEach(th => {
+    console.log(`TH: ${th}`);
+    th.addEventListener('click', () => {
+        const tableElement = th.parentElement.parentElement.parentElement;
+        const headerIndex = Array.prototype.indexOf.call(th.parentElement.children, th);
+        const currentIsAscending = th.classList.contains('th-sort-asc');
+        
+        sortTable(tableElement, headerIndex, !currentIsAscending);
+    })
+})

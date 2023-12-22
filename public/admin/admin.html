@@ -9,31 +9,37 @@
 <body>    
     <div class="navigation-panel-container">
         <a href="/students">Назад к разделам</a>
-        <button id="sections">Разделы</button>
-        <button id="subsections">Подразделы</button>
-        <button id="content">Контент</button>
+        <div class="active">
+            <button id="sections">Разделы</button>
+        </div>
+        <div>
+            <button id="subsections">Подразделы</button>
+        </div>
+        <div>
+            <button id="content">Контент</button>
+        </div>
     </div>
     <div class="admin-panel-container">
         <div class="sections">
             <div class="sections-list">
-                <table class="section-table">
+                <table class="section-table table-sortable">
                     <thead>
                         <tr class="section-container">
-                            <td>
+                            <th>
                                 <p class="section-id"><b>Номер</b></p>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <p class="section-name"><b>Название</b></p>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <p class="section-html-id"><b>ID раздела</b></p>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <p class="section-img-url"><b>Изображение</b></p>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <p><b>Удалить?</b></p>
-                            </td>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,27 +75,27 @@
         <div class="subsections">
             <!--List of subsections-->
             <div class="subsections-list">
-                <table class="subsection-table">
+                <table class="subsection-table table-sortable">
                     <thead>
                         <tr class="section-container">
-                            <td>
+                            <th>
                                 <p class="subsection-id"><b>Номер</b></p>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <p class="subsection-parent-name"><b>Относится к разделу</b></p>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <p class="subsection-name"><b>Название</b></p>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <p class="subsection-html-id"><b>ID подраздела</b></p>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <p class="subsection-img-url"><b>Изображение</b></p>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <p><b>Удалить?</b></p>
-                            </td>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -136,27 +142,27 @@
         </div>
         <div class="content">
             <div class="content-list">
-                <table class="content-table">
+                <table class="content-table table-sortable">
                     <thead>
                         <tr class="content-container">
-                            <td>
+                            <th>
                                 <p class="content-id"><b>Номер</b></p>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <p class="content-subsection-id"><b>Относится к подразделу</b></p>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <p class="content-type"><b>Тип контента</b></p>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <p class="content-param-1"><b>Содержимое 1</b></p>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <p class="content-param-2"><b>Содержимое 2</b></p>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <p><b>Удалить?</b></p>
-                            </td>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -180,7 +186,7 @@
                         Необходимо выбрать подраздел, к которому относится добавляемый контент.</p>
                     <br>
                     <label>Тип контента
-                        <select id="content-type" required>
+                        <select id="content-type" onchange="dropdownDynamicSuggestion()" required>
                             <option value="image">Изображение</option>
                             <option value="video">Видео</option>
                             <option value="article">Статья</option>
@@ -190,23 +196,15 @@
                     <p>
                         Необходимо выбрать тип добавляемого контента.
                     </p>
-                    <label>Первый параметр
-                        <input type="text" name="" id="content-param-1" placeholder="Введите первый параметр" required>
-                    </label>
-                    <p>
-                        Для изображений: ссылка на изображение.
-                        Для видео: название видео.
-                        Для статей: название статьи.
-                        Для презентаций: название презентации.
+                    <label for="content-param-1" id="param1">Описание</label>
+                    <input type="text" name="" id="content-param-1" placeholder="Введите описание изображения..." required>
+                    <p class="param1-suggestion">
+                        Описание изображения.
                     </p>
-                    <label>Второй параметр
-                        <textarea name="" id="content-param-2" placeholder="Введите второй параметр..." required></textarea>
-                    </label>
-                    <p>
-                        Для изображений: описание изображения.
-                        Для видео: код для вставки видео на сайт (блок iframe, скопированный с YouTube).
-                        Для статей: Текст статьи.
-                        Для презентаций: код для вставки презентации на сайт (блок iframe, скопированный с OneDrive).
+                    <label for="content-param-2" id="param2">Ссылка</label>
+                    <textarea name="" id="content-param-2" placeholder="Вставьте ссылку на изображение..." required></textarea>
+                    <p class="param2-suggestion">
+                        Ссылка на изображение.
                     </p>
 
                     <button class="content-send">Добавить контент</button>
@@ -214,8 +212,9 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript" src="sortTables.js"></script>
+    <script type="text/javascript" src="admin.js"></script>
     
-    
-    <script src="admin.js"></script>
 </body>
 </html>

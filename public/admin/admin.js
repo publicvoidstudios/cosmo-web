@@ -29,6 +29,11 @@ let content_param_1 = document.querySelector('#content-param-1');
 let content_param_2 = document.querySelector('#content-param-2');
 let content_send_button = document.querySelector('.content-send');
 
+let addSectionButton = document.querySelector('.add-section-button');
+let addSubsectionButton = document.querySelector('.add-subsection-button');
+let addContentButton = document.querySelector('.add-content-button');
+
+
 // endregion
 
 // region {OnClick EVENT} Event listeners for send data to database buttons
@@ -461,13 +466,25 @@ function UpdateContent(ids, content_parent_names, content_types, content_param_1
         rowID.classList.add('content-id');
         rowID.innerHTML = ids[i];
         contentParentName.classList.add('content-subsection-id');
-        contentParentName.innerHTML = content_parent_names[i];
+        contentParentName.innerHTML = ss_names[ss_html_ids.indexOf(content_parent_names[i])];
         contentType.classList.add('content-type');
-        contentType.innerHTML = content_types[i];
+        
+        
         contentParam1.classList.add('content-param-1');
         contentParam1.innerHTML = content_param_1s[i];
         contentParam2.classList.add('content-param-2');
         contentParam2.innerHTML = content_param_2s[i];
+
+        if(content_types[i] === 'image'){
+            contentType.innerHTML = 'Изображение';
+            contentParam2.innerHTML = `<img src=${content_param_2s[i]} alt=''>`
+        } else if (content_types[i] === 'video'){
+            contentType.innerHTML = 'Видео';
+        } else if (content_types[i] === 'article'){
+            contentType.innerHTML = 'Статья';
+        } else if (content_types[i] === 'pptx'){
+            contentType.innerHTML = 'Презентация';
+        }
 
 
         let deleteBtn = document.createElement('span');
@@ -487,6 +504,7 @@ function UpdateContent(ids, content_parent_names, content_types, content_param_1
         contentParam1Td.appendChild(contentParam1);
         contentParam2Td.appendChild(contentParam2);
         removeTd.appendChild(deleteBtn);
+        
     }
 }
 
@@ -540,7 +558,19 @@ function closeFormListener(form_selector){
     let button = formContainer.querySelector('span')
         button.onclick = () => {
         formContainer.classList.add('hidden');
+            switch (form_selector){
+                case '.sections-form':
+                    addSectionButton.classList.remove('hidden');
+                    return;
+                case '.subsections-form-container':
+                    addSubsectionButton.classList.remove('hidden');
+                    return;
+                case '.content-form-container':
+                    addContentButton.classList.remove('hidden');
+                    return;
+            }
     }
+    
 }
 
 closeFormListener('.sections-form');
@@ -551,16 +581,21 @@ closeFormListener('.content-form-container');
 
 //region {OnClick EVENT} Events for buttons, opening forms
 
-document.querySelector('.add-section-button').onclick = () => {
-    document.querySelector('.sections-form').classList.remove('hidden');
+
+
+addSectionButton.onclick = () => {
+    document.querySelector('.sections-form').classList.remove('hidden')
+    addSectionButton.classList.add('hidden');
 }
 
-document.querySelector('.add-subsection-button').onclick = () => {
+addSubsectionButton.onclick = () => {
     document.querySelector('.subsections-form-container').classList.remove('hidden');
+    addSubsectionButton.classList.add('hidden');
 }
 
-document.querySelector('.add-content-button').onclick = () => {
+addContentButton.onclick = () => {
     document.querySelector('.content-form-container').classList.remove('hidden');
+    addContentButton.classList.add('hidden');
 }
 
 //endregion
@@ -590,6 +625,10 @@ sectionsButton.onclick = () => {
     subSectionsDiv.style.display = 'none';
     //Hide content div
     contentDiv.style.display = 'none';
+    
+    sectionsButton.parentElement.classList.add('active');
+    subSectionsButton.parentElement.classList.remove('active');
+    contentButton.parentElement.classList.remove('active');
 }
 
 subSectionsButton.onclick = () => {
@@ -599,6 +638,10 @@ subSectionsButton.onclick = () => {
     sectionsDiv.style.display = 'none';
     //Hide content div
     contentDiv.style.display = 'none';
+
+    sectionsButton.parentElement.classList.remove('active');
+    subSectionsButton.parentElement.classList.add('active');
+    contentButton.parentElement.classList.remove('active');
 }
 
 contentButton.onclick = () => {
@@ -608,7 +651,58 @@ contentButton.onclick = () => {
     sectionsDiv.style.display = 'none';
     //Hide subsections div
     subSectionsDiv.style.display = 'none';
+
+    sectionsButton.parentElement.classList.remove('active');
+    subSectionsButton.parentElement.classList.remove('active');
+    contentButton.parentElement.classList.add('active');
 }
 
 //endregion
 
+//region CONTENT TYPE DYNAMIC SUGGESTIONS
+
+let param1Suggestion = document.querySelector('.param1-suggestion');
+let param2Suggestion = document.querySelector('.param2-suggestion');
+let label1 = document.querySelector('#param1');
+let label2 = document.querySelector('#param2');
+let input1 = document.querySelector('#content-param-1');
+let input2 = document.querySelector('#content-param-2');
+
+function dropdownDynamicSuggestion() {
+    switch (content_type.value){
+        case 'image':
+            label1.textContent = 'Описание';
+            label2.textContent = 'Ссылка';
+            input1.placeholder = 'Введите описание изображения...';
+            input2.placeholder = 'Вставьте ссылку на изображение...';
+            param1Suggestion.innerHTML = 'Описание изображения.';
+            param2Suggestion.innerHTML = 'Ссылка на изображение.';
+            return;
+        case 'video':
+            label1.textContent = 'Название';
+            label2.textContent = 'Код вставки на сайт';
+            input1.placeholder = 'Введите название видео...';
+            input2.placeholder = 'Вставьте скопированный код вставки видео...';
+            param1Suggestion.innerHTML = 'Название видео. (Не видно пользователям. Добавляется для удобства поиска нужного видео в списке контента.)';
+            param2Suggestion.innerHTML = 'Код для вставки видео на сайт (блок iframe, скопированный с YouTube).';
+            return;
+        case 'article':
+            label1.textContent = 'Название';
+            label2.textContent = 'Текст';
+            input1.placeholder = 'Введите название статьи...';
+            input2.placeholder = 'Скопируйте сюда текст статьи...';
+            param1Suggestion.innerHTML = 'Название статьи.';
+            param2Suggestion.innerHTML = 'Текст статьи. Изображения не принимаются. Только текст.';
+            return;
+        case 'pptx':
+            label1.textContent = 'Название';
+            label2.textContent = 'Код вставки на сайт';
+            input1.placeholder = 'Введите название презентации...';
+            input2.placeholder = 'Вставьте скопированный код вставки презентации...';
+            param1Suggestion.innerHTML = 'Название презентации.';
+            param2Suggestion.innerHTML = 'Код для вставки презентации на сайт (блок iframe, скопированный с OneDrive). <br> Необходимо открыть нужную презентацию в One Drive, затем: Файл -> Общий доступ -> Внедрение. <br> В открывшемся окне выделить код внизу окна и скопировать его в это поле.';
+            return;
+    }
+}
+
+//endregion

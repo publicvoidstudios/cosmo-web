@@ -140,7 +140,7 @@ function CreateSubSectionsContainers() {
     });
     
 }
-function CreateSubSection(sub_parent_name, sub_name, sub_html_id, sub_img_url){
+function CreateSubSection(sub_parent_name, sub_name, sub_html_id, sub_img_url, iteration){
     console.log(`Creating subsection: ${sub_name}`);
     //Get sub parent html id
     let parentHTMLID = html_ids[names.indexOf(sub_parent_name)];
@@ -164,9 +164,9 @@ function CreateSubSection(sub_parent_name, sub_name, sub_html_id, sub_img_url){
     button.appendChild(innerImage);
     button.append(sub_name);
     //Create blank container for subsection
-    CreateSubSectionDiv(parentHTMLID + '-sub', '_' + sub_html_id);
+    CreateSubSectionDiv(parentHTMLID + '-sub', '_' + sub_html_id, iteration);
 }
-function CreateSubSectionDiv (parent_html_id, sub_html_id) {
+function CreateSubSectionDiv (parent_html_id, sub_html_id, iteration) {
     //Get location for content
     let parent = document.querySelector('#' + parent_html_id);
     
@@ -210,7 +210,9 @@ function CreateSubSectionDiv (parent_html_id, sub_html_id) {
     galleryName.innerHTML = 'Галерея';
     
     let galleryItemsContainer = document.createElement('div');
-    galleryItemsContainer.classList.add('sub-items-container');
+    galleryItemsContainer.classList.add('sub-items-container', 'masked-overflow');
+    galleryItemsContainer.id = `gallery_items_container_${iteration}`;
+    
     
     //Pre-create videos
     let videosName = document.createElement('p');
@@ -218,7 +220,8 @@ function CreateSubSectionDiv (parent_html_id, sub_html_id) {
     videosName.innerHTML = 'Видео';
 
     let videosItemsContainer = document.createElement('div');
-    videosItemsContainer.classList.add('sub-items-container');
+    videosItemsContainer.classList.add('sub-items-container', 'masked-overflow');
+    videosItemsContainer.id = `videos_items_container_${iteration}`;
     
     //Pre-create articles
     let articlesPopUp = document.createElement('div');
@@ -237,7 +240,9 @@ function CreateSubSectionDiv (parent_html_id, sub_html_id) {
     articlesName.innerHTML = 'Статьи';
 
     let articlesItemsContainer = document.createElement('div');
-    articlesItemsContainer.classList.add('sub-items-container');
+    articlesItemsContainer.classList.add('sub-items-container', 'masked-overflow');
+    articlesItemsContainer.id = `articles_items_container_${iteration}`;
+    
     
     //Pre-create presentations
     let pptxName = document.createElement('p');
@@ -245,7 +250,64 @@ function CreateSubSectionDiv (parent_html_id, sub_html_id) {
     pptxName.innerHTML = 'Презентации';
 
     let pptxItemsContainer = document.createElement('div');
-    pptxItemsContainer.classList.add('sub-items-container');
+    pptxItemsContainer.classList.add('sub-items-container', 'masked-overflow');
+    pptxItemsContainer.id = `pptx_items_container_${iteration}`;
+
+    let imagesArrowContainer = document.createElement('div');
+    let imagesArrowLeft = document.createElement('button');
+    let imagesArrowRight = document.createElement('button');
+    let imagesArrowLeftI = document.createElement('i');
+    let imagesArrowRightI = document.createElement('i');
+
+    imagesArrowContainer.classList.add('arrow-buttons');
+    imagesArrowLeft.classList.add('arrow-button', 'left');
+    imagesArrowLeft.setAttribute('onClick', `arrowScroll(true, 300, '#gallery_items_container_${iteration}')`);
+    imagesArrowRight.classList.add('arrow-button', 'right');
+    imagesArrowRight.setAttribute('onClick', `arrowScroll(false, 300, '#gallery_items_container_${iteration}')`);
+    imagesArrowLeftI.classList.add('arrow', 'left');
+    imagesArrowRightI.classList.add('arrow', 'right');
+
+    let videosArrowContainer = document.createElement('div');
+    let videosArrowLeft = document.createElement('button');
+    let videosArrowRight = document.createElement('button');
+    let videosArrowLeftI = document.createElement('i');
+    let videosArrowRightI = document.createElement('i');
+
+    videosArrowContainer.classList.add('arrow-buttons');
+    videosArrowLeft.classList.add('arrow-button', 'left');
+    videosArrowLeft.setAttribute('onClick', `arrowScroll(true, 500, '#videos_items_container_${iteration}')`);
+    videosArrowRight.classList.add('arrow-button', 'right');
+    videosArrowRight.setAttribute('onClick', `arrowScroll(false, 500, '#videos_items_container_${iteration}')`);
+    videosArrowLeftI.classList.add('arrow', 'left');
+    videosArrowRightI.classList.add('arrow', 'right');
+
+    let articlesArrowContainer = document.createElement('div');
+    let articlesArrowLeft = document.createElement('button');
+    let articlesArrowRight = document.createElement('button');
+    let articlesArrowLeftI = document.createElement('i');
+    let articlesArrowRightI = document.createElement('i');
+
+    articlesArrowContainer.classList.add('arrow-buttons');
+    articlesArrowLeft.classList.add('arrow-button', 'left');
+    articlesArrowLeft.setAttribute('onClick', `arrowScroll(true, 300, '#articles_items_container_${iteration}')`);
+    articlesArrowRight.classList.add('arrow-button', 'right');
+    articlesArrowRight.setAttribute('onClick', `arrowScroll(false, 300, '#articles_items_container_${iteration}')`);
+    articlesArrowLeftI.classList.add('arrow', 'left');
+    articlesArrowRightI.classList.add('arrow', 'right');
+
+    let pptxArrowContainer = document.createElement('div');
+    let pptxArrowLeft = document.createElement('button');
+    let pptxArrowRight = document.createElement('button');
+    let pptxArrowLeftI = document.createElement('i');
+    let pptxArrowRightI = document.createElement('i');
+
+    pptxArrowContainer.classList.add('arrow-buttons');
+    pptxArrowLeft.classList.add('arrow-button', 'left');
+    pptxArrowLeft.setAttribute('onClick', `arrowScroll(true, 300, '#pptx_items_container_${iteration}')`);
+    pptxArrowRight.classList.add('arrow-button', 'right');
+    pptxArrowRight.setAttribute('onClick', `arrowScroll(false, 300, '#pptx_items_container_${iteration}')`);
+    pptxArrowLeftI.classList.add('arrow', 'left');
+    pptxArrowRightI.classList.add('arrow', 'right');
     
     //Finally place all pre-created elements on page
     parent.appendChild(container);
@@ -254,14 +316,35 @@ function CreateSubSectionDiv (parent_html_id, sub_html_id) {
     
     galleryDiv.append(galleryPopUp, galleryName, galleryItemsContainer);
     galleryPopUp.append(galleryCloseSpan, galleryPopUpImg, galleryPopUpParagraphDescription);
+
+    galleryItemsContainer.append(imagesArrowContainer);
+    imagesArrowContainer.append(imagesArrowLeft, imagesArrowRight);
+    imagesArrowLeft.append(imagesArrowLeftI);
+    imagesArrowRight.append(imagesArrowRightI);
     
     videoDiv.append(videosName, videosItemsContainer);
+
+    videosItemsContainer.append(videosArrowContainer);
+    videosArrowContainer.append(videosArrowLeft, videosArrowRight);
+    videosArrowLeft.append(videosArrowLeftI);
+    videosArrowRight.append(videosArrowRightI);
     
     articlesDiv.append(articlesPopUp, articlesName, articlesItemsContainer);
     articlesPopUp.append(articlesCloseSpan, articlesPopUpContainer);
     articlesPopUpContainer.append(articlesPopUpName, articlesPopUpText);
+
+    articlesItemsContainer.append(articlesArrowContainer);
+    articlesArrowContainer.append(articlesArrowLeft, articlesArrowRight);
+    articlesArrowLeft.append(articlesArrowLeftI);
+    articlesArrowRight.append(articlesArrowRightI);
     
     pptxDiv.append(pptxName, pptxItemsContainer);
+    
+    pptxItemsContainer.append(pptxArrowContainer);
+    pptxArrowContainer.append(pptxArrowLeft, pptxArrowRight);
+    pptxArrowLeft.append(pptxArrowLeftI);
+    pptxArrowRight.append(pptxArrowRightI);
+    
 }
 //endregion
 
@@ -278,7 +361,7 @@ CreateSubSectionsContainers();
 //Create subsections from database if there are subsections
 if(subsections !== "Error: No subsections found."){
     for(let i = 0; i < subsections.length; i++){
-        CreateSubSection(sub_parent_names[i], sub_names[i], sub_html_ids[i], sub_img_urls[i]);
+        CreateSubSection(sub_parent_names[i], sub_names[i], sub_html_ids[i], sub_img_urls[i], i);
     }
 }
 //endregion

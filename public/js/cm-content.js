@@ -92,13 +92,13 @@ function CreateContent(content_parent_name, content_type, content_param_1, conte
             imageDescription.classList.add('sub-item-desc');
             
             //Put encoded description to innerHtml of paragraph
-            imageDescription.innerHTML = decodeURI(content_param_2);
+            imageDescription.innerHTML = content_param_1;
             
             //Create image element
             let image = document.createElement('img');
             
             //Put decoded URL from DB to img src
-            image.src = content_param_1;
+            image.src = content_param_2;
             image.alt = '';
             
             //Put sub item to target container

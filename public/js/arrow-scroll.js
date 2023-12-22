@@ -1,13 +1,11 @@
 function arrowScroll(left, amount, element){
     let content = document.querySelector(element);
-    let scrollAmount = 0;
-    let scrollMax = content.clientWidth;
-    let scrollMin = 0;
     if(left){
         sideScroll(content, 'left', 10,amount,10);
-        
+        console.log(`Scrolling left. Element: ${element}. Content: ${content}.`);
     } else {
         sideScroll(content, 'right', 10,amount,10);
+        console.log(`Scrolling right. Element: ${element}. Content: ${content}.`);
     }
 }
 
