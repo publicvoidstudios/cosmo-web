@@ -366,7 +366,6 @@ header{
                 
                 .sub-item-desc{
                     align-self: center;
-                    height: 110px;
                     max-width: 94%;
                     text-align: center;
                     font-family: var(--description-font-family);
@@ -374,7 +373,7 @@ header{
                     font-size: 16px;
 
                     display: -webkit-box;
-                    -webkit-line-clamp: 6;
+                    -webkit-line-clamp: 10;
                     -webkit-box-orient: vertical;
                     overflow: hidden;
 
@@ -383,13 +382,13 @@ header{
                 
                 .sub-item-name{
                     align-self: center;
-                    height: 40px;
+                    height: auto;
                     max-width: 94%;
                     text-align: center;
                     font-family: var(--heading-font-family);
                     color: var(--headings-font-color);
                     font-size: 24px;
-                    margin: 5px 0;
+                    margin: 10px 0;
                 }
             }
         }
@@ -408,9 +407,34 @@ header{
                 .sub-item-name{
                     margin: 10px 0;
                     padding: 0;
-                    height: 68px;
                     font-size: 18px;
+                    
+                    max-width: 280px;
+                    
+                    display: -webkit-box;
+                    -webkit-line-clamp: 4;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+            }
+        }
+        
+    }
 
+    .articles{
+        .sub-items-container{
+            .sub-item{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+            }
+        }
+    }
+
+    .gallery{
+        .sub-items-container{
+            .sub-item{
+                .sub-item-desc{
                     display: -webkit-box;
                     -webkit-line-clamp: 3;
                     -webkit-box-orient: vertical;
@@ -418,7 +442,6 @@ header{
                 }
             }
         }
-        
     }
     
     .pop-up{
