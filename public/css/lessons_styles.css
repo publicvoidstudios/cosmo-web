@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Cuprum&family=Roboto&family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@700&family=Raleway&display=swap');
+
 /*Here are stored common variables for styles*/
 :root{
     --primary-color: #615dfa;
@@ -14,8 +15,8 @@
 
 
     /*Fonts variables*/
-    --heading-font-family: 'Russo One', sans-serif;
-    --description-font-family: 'Cuprum', sans-serif;
+    --heading-font-family: 'Alumni Sans', sans-serif;
+    --description-font-family: 'Raleway', sans-serif;
     --text-font-color: #8F91AC;
     --headings-font-color: #3e3f5e;
 
@@ -52,7 +53,7 @@ header{
     --logo-height: 80px;
 
     --font-color: #FFFFFF;
-    --font-family: 'Roboto', sans-serif;
+    --font-family: 'Alumni Sans', sans-serif;
 
     flex-grow: 1;
     margin: 0;
@@ -90,7 +91,7 @@ header{
         /*Name of website*/
         .panel-name{
             text-transform: uppercase;
-            font-size: 16px;
+            font-size: 24px;
             margin: 10px;
             font-weight: 600;
             max-width: 180px;
@@ -128,7 +129,7 @@ header{
             align-self: center;
             margin-right: 30px;
             text-align: center;
-            font-size: 14px;
+            font-size: 20px;
         }
         .extra:hover{
             color: var(--font-color);
@@ -159,7 +160,7 @@ header{
             
             .heading-name{
                 color: var(--secondary-color);
-                font-family: var(--description-font-family);
+                font-family: var(--heading-font-family);
                 margin: 0 20px;
                 letter-spacing: 2px;
             }
@@ -179,7 +180,7 @@ header{
             width: 100px;
             color: var(--secondary-color);
             background-color: var(--link-hover-color);
-            font-family: var(--description-font-family);
+            font-family: var(--heading-font-family);
             font-size: 20px;
             font-weight: 600;
             letter-spacing: 1px;
@@ -216,7 +217,7 @@ header{
         align-items: center;
 
         text-align: center;
-        font-family: var(--description-font-family);
+        font-family: var(--heading-font-family);
         color: var(--headings-font-color);
         font-size: 24px;
         
@@ -260,7 +261,7 @@ header{
         align-items: center;
 
         text-align: center;
-        font-family: var(--description-font-family);
+        font-family: var(--heading-font-family);
         color: var(--headings-font-color);
         font-size: 24px;
 
@@ -306,7 +307,7 @@ header{
             /*Font settings*/
             color: var(--secondary-color);
             text-align: center;
-            font-family: var(--description-font-family);
+            font-family: var(--heading-font-family);
             font-size: 24px;
         }
         ::-webkit-scrollbar{
@@ -641,6 +642,7 @@ header{
     width: 96%;
     align-self: center;
     pointer-events: none;
+    
 
     .arrow-button{
         background-color: var(--arrow-buttons-background-color);

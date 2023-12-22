@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Cuprum&family=Roboto&family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@700&family=Raleway&display=swap');
+
+/*Here are stored common variables for styles*/
 :root{
     --primary-color: #615dfa;
     --secondary-color: #eee;
@@ -13,8 +15,8 @@
 
 
     /*Fonts variables*/
-    --heading-font-family: 'Russo One', sans-serif;
-    --description-font-family: 'Cuprum', sans-serif;
+    --heading-font-family: 'Alumni Sans', sans-serif;
+    --description-font-family: 'Raleway', sans-serif;
     --text-font-color: #8F91AC;
     --headings-font-color: #3e3f5e;
 
@@ -168,7 +170,7 @@ body{
         border: none;
         color: var(--secondary-color);
         
-        font-family: var(--description-font-family);
+        font-family: var(--heading-font-family);
         
         text-decoration: none;
         text-align: center;

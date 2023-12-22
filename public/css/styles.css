@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Cuprum&family=Roboto&family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@700&family=Raleway&display=swap');
 
+/*Here are stored common variables for styles*/
 :root{
     --primary-color: #615dfa;
     --secondary-color: #eee;
@@ -14,8 +15,8 @@
 
 
     /*Fonts variables*/
-    --heading-font-family: 'Russo One', sans-serif;
-    --description-font-family: 'Cuprum', sans-serif;
+    --heading-font-family: 'Alumni Sans', sans-serif;
+    --description-font-family: 'Raleway', sans-serif;
     --text-font-color: #8F91AC;
     --headings-font-color: #3e3f5e;
 
@@ -31,7 +32,7 @@ html {
 
 a.anchor{
     position: relative;
-    top: -75px;
+    top: 0;
 }
 
 * {
@@ -52,7 +53,7 @@ header{
     --logo-height: 80px;
 
     --font-color: #FFFFFF;
-    --font-family: 'Roboto', sans-serif;
+    --font-family: 'Alumni Sans', sans-serif;
 
     flex-grow: 1;
     margin: 0;
@@ -88,7 +89,7 @@ header{
         /*Name of website*/
         .panel-name{
             text-transform: uppercase;
-            font-size: 16px;
+            font-size: 24px;
             margin: 10px;
             font-weight: 600;
             max-width: 180px;
@@ -110,7 +111,7 @@ header{
             font-family: var(--font-family);
             color: var(--font-color);
             font-weight: 600;
-            font-size: 14px;
+            font-size: 20px;
             border: 0;
         }
 
