@@ -607,8 +607,8 @@ header{
     --mask-image-content: linear-gradient(
             to right,
             transparent,
-            black var(--mask-height),
-            black calc(100% - var(--mask-height)),
+            #000000 var(--mask-height),
+            #000000 calc(100% - var(--mask-height)),
             transparent
     );
 
@@ -617,7 +617,7 @@ header{
     --mask-size-content: calc(100% - var(--scrollbar-width)) 100%;
 
     /* The scrollbar mask is a black pixel */
-    --mask-image-scrollbar: linear-gradient(black, black);
+    --mask-image-scrollbar: linear-gradient(#000000, #000000);
 
     /* The width of our black pixel is the width of the scrollbar.
   The height is the full container height */

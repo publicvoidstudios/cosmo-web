@@ -102,7 +102,7 @@ body{
             align-self: center;
             width: 90%;
             border-radius: 5px;            
-            border: 1px solid black;
+            border: 1px solid #000000;
             font-size: 18px;
         }
         
@@ -110,7 +110,7 @@ body{
             align-self: center;
             width: 90%;
             border-radius: 5px;
-            border: 1px solid black;
+            border: 1px solid #000000;
             font-size: 18px;
             resize: vertical;
         }
@@ -119,7 +119,7 @@ body{
             align-self: center;
             width: 90%;
             font-size: 18px;
-            border: 1px solid black;
+            border: 1px solid #000000;
             border-radius: 5px;
             cursor: pointer;
         }
@@ -183,7 +183,7 @@ body{
     
     & a:hover, & button:hover{
         background-color: var(--link-hover-color);
-        color: white;
+        color: #ffffff;
     }
 }
 
@@ -266,14 +266,14 @@ body{
                 & tbody{
                     
                     & tr{
-                        border-left: 1px solid lightgray;
-                        border-right: 1px solid lightgray;
-                        border-bottom: 1px solid lightgray;
+                        border-left: 1px solid #d3d3d3;
+                        border-right: 1px solid #d3d3d3;
+                        border-bottom: 1px solid #d3d3d3;
                         color: var(--headings-font-color);
                         font-family: var(--description-font-family);
                         & td{
-                            border-left: 1px solid lightgray;
-                            border-right: 1px solid lightgray;
+                            border-left: 1px solid #d3d3d3;
+                            border-right: 1px solid #d3d3d3;
                             overflow: hidden;
                             padding: 10px 20px;
                             min-width: 100px;
