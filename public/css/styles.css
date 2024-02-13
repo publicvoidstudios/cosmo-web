@@ -187,7 +187,7 @@ header{
     /* Description styles in landing section */
     .description{
         margin: 0;
-        padding: 0;
+        padding: 0 10px;
         font-size: 25px;
         font-family: var(--description-font-family);
         color: var(--text-font-color);
@@ -210,18 +210,22 @@ header{
         
         /* Item's container's headings styles in landing section */
         .items-container-heading{
+            text-align: center;
             align-self: center;
             font-size: 24px;
             font-family: var(--description-font-family);
             color: var(--headings-font-color);
+            padding: 0 10px;
         }
         
         /* Item's container's descriptions styles in landing section */
         .items-container-description{
+            text-align: center;
             align-self: center;
             font-size: 18px;
             font-family: var(--description-font-family);
             color: var(--text-font-color);
+            padding: 0 10px;
         }
     }    
 
@@ -438,7 +442,7 @@ header{
 }
 /*Adaptiveness*/
 /*Medium screens and tablets*/
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
     .welcome{
         .welcome-heading-text{
             .welcome-heading{
@@ -457,7 +461,7 @@ header{
     
 }
 /*Mobile devices medium screens*/
-@media screen and (max-width: 720px){
+@media screen and (max-width: 768px){
     .welcome{
         .welcome-heading-text{
             .welcome-heading{
@@ -475,7 +479,7 @@ header{
     }
 }
 /*Mobile devices small screens*/
-@media screen and (max-width: 480px){
+@media screen and (max-width: 576px){
     .welcome{
         .welcome-heading-text{
             .welcome-heading{
