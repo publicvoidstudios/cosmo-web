@@ -105,9 +105,12 @@ header{
             letter-spacing: 2px;
             
             /* Screen adaptiveness */
-            @media screen and (max-width: 720px) {
+            @media screen and (max-width: 992px) {
                 display: none;
             }
+        }
+        @media screen and (max-width: 992px) {
+            min-width: var(--logo-width);
         }
     }
     
@@ -154,11 +157,14 @@ header{
             color: var(--font-color);
             background-color: var(--tretiary-color);
         }
+        @media screen and (max-width: 992px) {
+            min-width: var(--logo-width);
+        }
     }
     
     /* Disabling navigation buttons on small and mobile devices */
     .navigation{
-        @media screen and (max-width: 1024px) {
+        @media screen and (max-width: 576px) {
             display: none;            
         }
     }
