@@ -2,44 +2,48 @@
 
 /*Here are stored common variables for styles*/
 :root{
+    /* Color Variables */
+
+    /* Primary Colors */
     --primary-color: #615dfa;
     --secondary-color: #eee;
     --tretiary-color: #23d2e2;
     --tretiary-color-hover: #1bc5d4;
 
+    /* Other Colors */
     --arrow-buttons-background-color: #f2f2f2;
-
     --item-back-color: #fff;
-
     --link-hover-color: #1bc5d4;
 
-
-    /*Fonts variables*/
+    /* Font Variables */
     --heading-font-family: 'Alumni Sans', sans-serif;
     --description-font-family: 'Raleway', sans-serif;
     --text-font-color: #8F91AC;
     --headings-font-color: #3e3f5e;
 
-
+    /* Box Shadow Colors */
     --item-box-shadow-color: #d0d0d0;
     --header-box-shadow-color: #606060;
 
 }
 
+/* General HTML Styles */
 html {
     scroll-behavior: smooth;
     
     transition: all 0.5s ease-in-out;
 }
-
+/* Anchor positioning */
 a.anchor{
     position: relative;
     top: 0;
 }
 
+/* Animations transitioning time */
 * {
     transition: all 0.2s ease-out;
 }
+
 
 body {
     background-color: var(--secondary-color);
@@ -48,15 +52,20 @@ body {
     padding: 0;
     margin: 0;
 }
+
 /*Header, containing panel*/
 header{
     /*Vars*/
+    
+    /*Sizing*/
     --logo-width: 80px;
     --logo-height: 80px;
-
+    
+    /*Font settings*/
     --font-color: #FFFFFF;
     --font-family: 'Alumni Sans', sans-serif;
-
+    
+    /* Header Container Styles */
     flex-grow: 1;
     margin: 0;
     padding: 0;
@@ -65,11 +74,8 @@ header{
     justify-content: space-between;
     position: fixed;
     width: 100%;
-
     z-index: 100;
-
     box-shadow: 0 0 10px var(--header-box-shadow-color);
-
     color: var(--font-color);
     font-family: var(--font-family);
 
@@ -84,11 +90,11 @@ header{
         .panel-logo{
             width: var(--logo-width);
             height: var(--logo-height);
-            border-radius: 50%;
+            border-radius: 0;
             margin: 5px;            
         }
 
-        /*Name of website*/
+        /*Name of the website*/
         .panel-name{
             text-transform: uppercase;
             font-size: 24px;
@@ -97,19 +103,22 @@ header{
             max-width: 180px;
             font-family: var(--heading-font-family);
             letter-spacing: 2px;
-
-            @media screen and (max-width: 600px) {
+            
+            /* Screen adaptiveness */
+            @media screen and (max-width: 720px) {
                 display: none;
             }
         }
     }
-
+    
+    /* Navigation panel container */
     .panel-navigation-container{
         display: flex;
         align-self: center;
         justify-self: center;
         min-width: 300px;
-
+        
+        /* Navigation buttons styles */
         .navigation-button{
             display: flex;
             justify-content: center;
@@ -124,10 +133,12 @@ header{
             border: 0;
         }
 
+        /* On hover color change */
         .navigation-button:hover{
             color: var(--link-hover-color);
         }
-
+        
+        /* Additional styles for button leading to students section */
         .extra{
             background: var(--link-hover-color);
             border-radius: 10px;
@@ -137,11 +148,15 @@ header{
             text-align: center;
             padding: 0 10px;
         }
+        
+        /* On hover color changes */
         .extra:hover{
             color: var(--font-color);
             background-color: var(--tretiary-color);
         }
     }
+    
+    /* Disabling navigation buttons on small and mobile devices */
     .navigation{
         @media screen and (max-width: 1024px) {
             display: none;            
@@ -149,13 +164,15 @@ header{
     }
 }
 
+/* Landing Section Styles */
 .landing-section {
+    /* Landing Section Container Styles */
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px 0 20px 0;
     
-
+    /* Heding styles in landing section */
     .heading{
         margin: 0;
         padding: 0;
@@ -167,6 +184,7 @@ header{
         color: var(--headings-font-color);
     }
 
+    /* Description styles in landing section */
     .description{
         margin: 0;
         padding: 0;
@@ -177,17 +195,20 @@ header{
         text-align: center;
     }
 
+    /*Hiding scrollbar*/
     ::-webkit-scrollbar{
         width: 0;
         height: 0;
     }
-
+    
+    /* Items Division Container Styles */
     .items-division-container{
         display: flex;
         flex-direction: column;
         overflow: auto;
         width: 100%;
-
+        
+        /* Item's container's headings styles in landing section */
         .items-container-heading{
             align-self: center;
             font-size: 24px;
@@ -195,18 +216,18 @@ header{
             color: var(--headings-font-color);
         }
         
+        /* Item's container's descriptions styles in landing section */
         .items-container-description{
             align-self: center;
             font-size: 18px;
             font-family: var(--description-font-family);
             color: var(--text-font-color);
         }
-    }
-    
-    .items-division-container{
-    }
+    }    
 
+    /* Item's styles */
     .items-container{
+        /* Container styles */
         display: inline-flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -214,56 +235,9 @@ header{
         max-width: 100%;
         overflow: auto;
         justify-content: center;
-        align-items: center;        
-        
-        .arrow-buttons{
-            display: flex;
-            justify-content: space-between;
-            position: absolute;
-            width: 100%;
-            align-self: center;
+        align-items: center;
 
-            .arrow-button{
-                background-color: var(--arrow-buttons-background-color);
-                width: 40px;
-                height: 40px;
-                margin: 20px;
-                color: var(--secondary-color);
-                border-radius: 50%;
-                border: none;
-                font-family: var(--heading-font-family);
-                font-weight: 900;
-                box-shadow: inset #808080 0 0 5px 0, #808080 0 0 5px 0;
-                opacity: 0.5;
-                z-index: 99;
-
-                .arrow {
-                    border: solid var(--headings-font-color);
-                    border-width: 0 3px 3px 0;
-                    display: inline-block;
-                    padding: 4px;
-                }
-
-                .right {
-                    right: 0;
-                    transform: rotate(-45deg);
-                    margin-right: 3px;
-                    margin-top: 4px;
-                }
-
-                .left {
-                    transform: rotate(135deg);
-                    margin-left: 3px;
-                    margin-top: 4px;
-                }
-            }
-
-            .arrow-button:hover{
-                opacity: 0.8;
-            }
-        }
-        
-
+        /* Item's styles */
         .item {
             background-color: var(--item-back-color);
             border-radius: 10px;
@@ -281,6 +255,7 @@ header{
             transform-style: preserve-3d;
             transform: perspective(1000px);
 
+            /*Style of image of an item*/
             .item-image{
                 width: 200px;
                 margin: 25px 25px 10px 25px;
@@ -290,6 +265,7 @@ header{
                 transform: translateZ(20px);
             }
 
+            /* Item name styles */
             .item-name{
                 max-width: 250px;
                 margin: 0 0 10px 0;
@@ -300,10 +276,13 @@ header{
                 color: var(--headings-font-color);
                 text-transform: lowercase;
             }
+
+            /* Capitalization of first letter in item's name */
             .item-name:first-letter{
                 text-transform: capitalize;
             }
 
+            /* Item description styles */
             .item-description {
                 position: absolute;
                 bottom: 18%;
@@ -315,6 +294,8 @@ header{
                 opacity: 0;
             }
         }
+        
+        /*Styles on hover item*/
         .item:hover{
             cursor: pointer;
 
@@ -329,6 +310,7 @@ header{
     }
 }
 
+/* Pop-up styles */
 .pop-up{
     background: #00000080;
     
@@ -340,6 +322,7 @@ header{
     height: 100%;
     display: none;
     
+    /* Close button styles */
     & span{
         --close-button-size: 50px;
 
@@ -381,10 +364,14 @@ header{
     }
 }
 
+
+/* For hidden objects */
 .hidden{
     display: none;
 }
 
+
+/*Beginning of a page styles*/
 .welcome{
     display: flex;    
     color: var(--headings-font-color);
@@ -419,15 +406,19 @@ header{
         }
     }
     
+    /*Collage styles*/
     .collage{
+        /* Vars */
+        --gap: 4px;
+        --num-cols: 4;
+        --row-height: calc(100vw/var(--num-cols));
+
+        /* Styles */
         position: absolute;
         top: 0;
         z-index: -1;
         max-height: 100vh;
-        overflow: hidden;
-        --gap: 4px;
-        --num-cols: 4;
-        --row-height: calc(100vw/var(--num-cols));        
+        overflow: hidden;           
         box-sizing: border-box;
         padding: var(--gap);        
         display: grid;
@@ -442,18 +433,64 @@ header{
         object-fit: cover;
     }
     
-    @media screen and (max-width: 1024px) {
+    
+        
+}
+/*Adaptiveness*/
+/*Medium screens and tablets*/
+@media screen and (max-width: 1024px) {
+    .welcome{
+        .welcome-heading-text{
+            .welcome-heading{
+                font-size: 65px;
+                letter-spacing: 1px;
+            }
+            .welcome-text{
+                font-size: 20px;
+            }
+        }        
+        
         .collage {
             --num-cols: 3;
         }
     }
     
-    @media screen and (max-width: 600px){
-        .collage{
+}
+/*Mobile devices medium screens*/
+@media screen and (max-width: 720px){
+    .welcome{
+        .welcome-heading-text{
+            .welcome-heading{
+                font-size: 60px;
+                letter-spacing: 0;
+            }
+            .welcome-text{
+                font-size: 18px;
+            }
+        }
+        
+        .collage {
             --num-cols: 2;
         }
     }
+}
+/*Mobile devices small screens*/
+@media screen and (max-width: 480px){
+    .welcome{
+        .welcome-heading-text{
+            .welcome-heading{
+                font-size: 50px;
+                letter-spacing: 0;
+            }
+            .welcome-text{
+                font-size: 16px;
+            }
+        }
         
+        .collage {
+            --num-cols: 1;
+        }
+    }
 }
 
 .contacts{
@@ -462,6 +499,7 @@ header{
 
     .contacts-container{        
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;        
         padding: 0;        
         margin: 30px;
@@ -624,7 +662,7 @@ header{
         }
     }
 }
-
+/* Scrollbar settings */
 /* width */
 ::-webkit-scrollbar {
     width: 0.5vw;
